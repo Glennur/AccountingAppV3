@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AccountingAppV3.View.FirstTransactionPage"
+             Title="FirstTransactionPage">
+    <VerticalStackLayout Spacing="10">
+        <Image 
+    Source="vallsund.png" 
+    HeightRequest="100" 
+    WidthRequest="2000" 
+    Aspect="AspectFill"/>
+        <Label 
+            Text="Välkommen till din första transaktion"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" 
+            FontSize="20"/>
+        <Label 
+        Text="Du hamnar här eftersom vi behöver lite kassauppgifter innan vi kan starta det första året"
+        VerticalOptions="Center" 
+        HorizontalOptions="Center" />
+        <Grid
+            RowDefinitions="20*,20*, 20*"
+            ColumnDefinitions="2*, 2*" 
+            RowSpacing="10" 
+            ColumnSpacing="10">
+            <Label 
+                Text="Datum att starta bokföring ifrån" 
+                Grid.Row="0" Grid.Column="0" 
+                HorizontalOptions="End" 
+                VerticalOptions="Center"/>
+            <DatePicker 
+                Grid.Row="0" 
+                Grid.Column="1" 
+                Date="{Binding StartDate}" />           
+
+            <Label 
+                Text="Ingående belopp kassa" 
+                Grid.Row="1" Grid.Column="0" 
+                HorizontalOptions="End" 
+                VerticalOptions="Center"/>
+            <Entry 
+                x:Name="Cash" 
+                Grid.Row="1" 
+                Grid.Column="1" 
+                HorizontalOptions="Start" 
+                WidthRequest="200" 
+                Text="{Binding CashAmount}"/>
+            <Label x:Name="Bank" 
+                   Text="Ingående belopp bankgiro" 
+                   Grid.Row="2" Grid.Column="0" 
+                   HorizontalOptions="End" 
+                   VerticalOptions="Center"/>
+            <Entry 
+                Grid.Row="2" 
+                Grid.Column="1" 
+                HorizontalOptions="Start" 
+                WidthRequest="200" 
+                Text="{Binding BankGiroAmount}"/>
+        </Grid>
+        <Button 
+            Text="Skapa" 
+            HorizontalOptions="Center" 
+            BackgroundColor="Green" 
+            Clicked="OnClickedCreateFirstTransaction"/>
+        <Label Text="{Binding ErrorMessage}" TextColor="Red" IsVisible="{Binding ErrorMessage, Converter={StaticResource EmptyStringToBoolConverter}}" />
+    </VerticalStackLayout>
+</ContentPage>

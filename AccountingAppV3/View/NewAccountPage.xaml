@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AccountingAppV3.View.NewAccountPage"
+             Title="NewAccountPage">
+    <VerticalStackLayout 
+        Spacing="10">
+        <Image 
+            Source="vallsund.png" 
+            HeightRequest="100"
+            WidthRequest="2000" 
+            Aspect="AspectFill"/>
+
+        <Label 
+            x:Name="HeadLiner"
+            Text="Nytt konto" 
+            HorizontalOptions="Center" 
+        FontSize="20"/>
+
+        <Grid 
+            RowDefinitions="20*,20*,20*" 
+            ColumnDefinitions="2*, 1*, 2*" 
+            RowSpacing="10" 
+            ColumnSpacing="10">
+
+            <Label 
+                Text="Kontonummer" 
+                Grid.Row="0" 
+                Grid.Column="0" 
+                HorizontalOptions="End" 
+                VerticalOptions="Center"/>
+            <Entry 
+                x:Name="AccountNr"
+                Grid.Row="0" 
+                Placeholder="Kontonummer"
+                TextChanged="AccountNrTextChaged"
+                Grid.Column="1" 
+                HorizontalOptions="Fill"/>
+            <Label 
+                Text="Kontonamn"
+                Grid.Row="1" 
+                Grid.Column="0" 
+                HorizontalOptions="End" 
+                VerticalOptions="Center"/>
+            <Entry 
+                x:Name="AccountName"
+                Grid.Row="1" 
+                Placeholder="Kontonamn"
+                Grid.Column="1" 
+                HorizontalOptions="Fill"/>
+            <Label 
+                Text="Beskrivning" 
+                Grid.Row="2" Grid.Column="0" 
+                HorizontalOptions="End" 
+                VerticalOptions="Center"/>
+            <Entry 
+                x:Name="AccountDescription"
+                Grid.Row="2" 
+                Placeholder="Beskrivning" 
+                Grid.Column="1" 
+                HorizontalOptions="Fill"/>
+        </Grid>
+        <Button 
+            x:Name="SaveButton"
+            Text="Skapa konto" 
+            Clicked="OnClickedCreateNewAccount"
+            HorizontalOptions="Center"        
+            BackgroundColor="Green"/>
+        <Label
+            x:Name="UpdateMessage"
+            Text=""
+            HorizontalOptions="Center"
+            BackgroundColor="Red"/>
+    </VerticalStackLayout>
+</ContentPage>

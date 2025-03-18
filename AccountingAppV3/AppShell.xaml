@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="AccountingAppV3.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:AccountingAppV3"
+    Shell.FlyoutBehavior="Disabled"
+    Title="AccountingAppV3">
+
+    <Shell.MenuBarItems>
+        <MenuBarItem             
+        Text="Meny">
+            <MenuFlyoutSubItem 
+            Text="Transaktioner">
+                <MenuFlyoutItem Text="Ny transaktion" CommandParameter="NewTransactionPage" Clicked="OnMenuClicked"/>
+                <MenuFlyoutItem Text="Se tidigare transaktioner" CommandParameter="TransactionHistoryPage" Clicked="OnMenuClicked"/>
+            </MenuFlyoutSubItem>
+
+            <MenuFlyoutSubItem
+            Text="Leverantörer">
+                <MenuFlyoutItem Text="Ny leverantör" CommandParameter="NewSupplierPage" Clicked="OnMenuClicked"/>
+                
+                <MenuFlyoutItem Text="Se alla leverantörer" CommandParameter="AllSupplierPage" Clicked="OnMenuClicked"/>
+            </MenuFlyoutSubItem>
+
+            <MenuFlyoutSubItem
+            Text="Boende">
+                <MenuFlyoutItem Text="Ny boende" CommandParameter="NewMemberPage" Clicked="OnMenuClicked"/>
+                
+                <MenuFlyoutItem Text="Se alla boende"/>
+                <MenuFlyoutItem Text="Hushåll" CommandParameter="HouseHoldPage" Clicked="OnMenuClicked"/>
+            </MenuFlyoutSubItem>
+            <MenuFlyoutSubItem
+            Text="Konton">
+                <MenuFlyoutItem Text="Nytt konto" CommandParameter="NewAccountPage" Clicked="OnMenuClicked"/>
+                <MenuFlyoutItem Text="Alla konton" CommandParameter="AllAccountPage" Clicked="OnMenuClicked"/>
+                
+            </MenuFlyoutSubItem>
+            <MenuFlyoutItem Text="Kassabok"/>
+            <MenuFlyoutItem Text="Första gången" CommandParameter="FirstTransactionPage" Clicked="OnMenuClicked"/>
+
+        </MenuBarItem>
+
+
+
+    </Shell.MenuBarItems>
+
+    <ShellContent
+        Title="Home"
+        ContentTemplate="{DataTemplate local:MainPage}"
+        Route="MainPage" />
+
+</Shell>

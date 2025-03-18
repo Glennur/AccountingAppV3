@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AccountingAppV3.View.NewMemberPage"
+             Title="Ny boende">
+    <VerticalStackLayout Spacing="10">
+
+
+
+        <Image 
+            Source="vallsund.png" 
+            HeightRequest="100" 
+            WidthRequest="2000" 
+            Aspect="AspectFill"/>
+
+        <Label 
+            Text="Ny Boende" 
+            HorizontalOptions="Center" 
+            FontSize="20"/>
+
+        <Grid
+            RowDefinitions="20*,20*,20*,20*,20*,20*"
+            ColumnDefinitions="2*, 1*, 2*" 
+            RowSpacing="10" 
+            ColumnSpacing="10">
+
+            <Label 
+                Text="Namn" 
+                Grid.Row="0" 
+                Grid.Column="0" 
+                HorizontalOptions="End" 
+                VerticalOptions="Center"/>
+            <Entry 
+                Grid.Row="0" 
+                x:Name="NameEntry" 
+                Text="{Binding NewMember.Name, Mode=TwoWay}"
+                Placeholder="Namn" 
+                Grid.Column="1" 
+                HorizontalOptions="Fill"/>
+            <Label 
+                Text="Adress" 
+                Grid.Row="1" 
+                Grid.Column="0" 
+                HorizontalOptions="End" 
+                VerticalOptions="Center"/>
+            <Picker 
+                x:Name="AddressEntry"                   
+                ItemsSource="{Binding HouseHolds}"
+                ItemDisplayBinding="{Binding AddressName, StringFormat='Vallsundsvägen {0}'}"
+                SelectedItem="{Binding SelectedHouseHold, Mode=TwoWay}"
+                
+                Grid.Row="1" 
+                Grid.Column="1"/>
+            <Label 
+                Text="E-Post" 
+                Grid.Row="2" 
+                Grid.Column="0" 
+                HorizontalOptions="End" 
+                VerticalOptions="Center"/>
+            <Entry 
+                Grid.Row="2" 
+                Text="{Binding NewMember.Email, Mode=TwoWay}"
+                x:Name="EmailEntry" 
+                Placeholder="E-Post" 
+                Grid.Column="1" 
+                HorizontalOptions="Fill"/>
+            <Label 
+                Text="Mobil" 
+                Grid.Row="3" 
+                Grid.Column="0" 
+                HorizontalOptions="End" 
+                VerticalOptions="Center"/>
+            <Entry 
+                Grid.Row="3" 
+                Text="{Binding NewMember.PhoneMobile, Mode=TwoWay}"
+                x:Name="MobilePhoneEntry" 
+
+                Grid.Column="1" 
+                Placeholder="Mobil" 
+                HorizontalOptions="Fill"/>
+            <Label 
+                Text="Hemtelefon"
+                Grid.Row="4" 
+                Grid.Column="0" 
+                HorizontalOptions="End" 
+                VerticalOptions="Center"/>
+            <Entry 
+                Grid.Row="4" 
+                Grid.Column="1" 
+                Text="{Binding NewMember.PhoneHome, Mode=TwoWay}"
+                x:Name="HomePhoneEntry" 
+                Placeholder="Hemtelefon" 
+                HorizontalOptions="Fill"/>
+            <Label 
+                Text="Födelsedag" 
+                Grid.Row="5" 
+                Grid.Column="0" 
+                HorizontalOptions="End" 
+                VerticalOptions="Center"/>            
+            <DatePicker 
+                Grid.Row="5" 
+                Grid.Column="1" 
+                Date="{Binding DateOfBirth, Mode=TwoWay}"
+                x:Name="DateOfBirthEntry"                
+                Format="yyyy-MM-dd"/>
+
+        </Grid>
+        <Button 
+            x:Name="SaveButton"
+            Text="Skapa boende"
+            Clicked="OnClickedCreateNewMember"
+            HorizontalOptions="Center"
+            BackgroundColor="Green"/>
+        <Label 
+            
+            Text="{Binding SelectedHouseHold.Id, Mode=OneWay}"
+
+            
+            HorizontalOptions="Center"/>
+    </VerticalStackLayout>
+</ContentPage>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AccountingAppV3.View.AllSupplierPage"
+             Title="AllSupplierPage">
+    <ScrollView>
+    <VerticalStackLayout
+            Spacing="10">
+            <Image Source="vallsund.png" HeightRequest="100" WidthRequest="2000" Aspect="AspectFill"/>
+
+            <Label Text="Alla leverantörer" HorizontalOptions="Center" FontSize="20"/>
+
+
+            <ListView ItemsSource="{Binding Suppliers}" ItemSelected="OnListViewItemSelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid
+                    Padding="10"
+                    RowDefinitions="Auto, *"
+                    ColumnDefinitions="10, 200, 100 , *"
+                    ColumnSpacing="20"
+                    RowSpacing="10">
+
+                                <Label 
+                                    Grid.Column="1"
+                                    Text="{Binding SupplierName}"
+                                    FontSize="16" 
+                                    HorizontalOptions="Start"/>
+                                <Label 
+                                    Grid.Column="2"
+                                    Text="{Binding SupplierAccountNumber}"
+                                    FontSize="16" 
+                                    HorizontalOptions="Start"/>
+                                <Label 
+                                    Grid.Column="3"
+                                    Text="{Binding Description}"
+                                    FontSize="16" 
+                                    HorizontalOptions="Start"/>
+                                
+
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

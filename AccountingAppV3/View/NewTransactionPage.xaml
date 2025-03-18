@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AccountingAppV3.View.NewTransactionPage"
+             Title="Ny Transaktion">
+    <VerticalStackLayout       
+Spacing="10"        
+>
+
+        <Image Source="vallsund.png" HeightRequest="100" WidthRequest="2000" Aspect="AspectFill"/>
+
+        <Label Text="{Binding CurrentYear, StringFormat= 'Ny Transaktion - {0}'}" HorizontalOptions="Center" FontSize="20"/>
+
+        <Grid 
+            RowDefinitions="20*,20*,20*,20*,20*,20*, 20*" 
+            ColumnDefinitions="2*, 1*, 2*" 
+            RowSpacing="10" 
+            ColumnSpacing="10">
+
+            <Label 
+                Text="Datum" 
+                Grid.Row="0" 
+                Grid.Column="0" 
+                HorizontalOptions="End" 
+                VerticalOptions="Center"/>
+            <DatePicker 
+                x:Name="datePicker" 
+                Date="{Binding SelectedDate}" 
+                Format="yyyy-MM-dd" 
+                Grid.Row="0" 
+                Grid.Column="1"/>
+            <Label
+                Grid.Row="0"
+                Grid.Column="2"
+                Text="{Binding ErrorMessageDate}"
+                VerticalOptions="Center"
+                BackgroundColor="Red"
+                HorizontalOptions="Start"
+                />
+            <Label 
+                Text="Verifikationsnummer" 
+                Grid.Row="1" Grid.Column="0"
+                HorizontalOptions="End"
+                VerticalOptions="Center"/>
+            <Entry 
+                x:Name="VerificationNumber"
+                Grid.Row="1" 
+                Text="{Binding VerificationNumber}"
+                Placeholder="Verifikationsnummer"
+                Grid.Column="1" 
+                HorizontalOptions="Fill"/>
+            <Label
+                Grid.Row="1"
+                Grid.Column="2"
+                Text="{Binding ErrorMessageVerification}"
+                VerticalOptions="Center"
+                BackgroundColor="Red"
+                HorizontalOptions="Start"
+                />
+            <Label 
+                Text="Belopp" 
+                Grid.Row="2" 
+                Grid.Column="0" 
+                HorizontalOptions="End"
+                VerticalOptions="Center"/>
+            <Entry 
+                x:Name="Amount" 
+                Keyboard="Numeric"
+                Grid.Row="2" 
+                Placeholder="Belopp"
+                Grid.Column="1" 
+                Text="{Binding Amount}" 
+                HorizontalOptions="Fill"/>
+            <Label
+                Grid.Row="2"
+                Grid.Column="2"
+                Text="{Binding ErrorMessageAmount}"
+                VerticalOptions="Center"
+                BackgroundColor="Red"
+                HorizontalOptions="Start"
+                />
+
+
+            <Label 
+                Text="Debet" 
+                Grid.Row="3"
+                Grid.Column="0" 
+                HorizontalOptions="End" 
+                VerticalOptions="Center"/>
+            <Picker 
+                x:Name="DebitPicker"
+                ItemsSource="{Binding Accounts}"
+                ItemDisplayBinding="{Binding AccountName, StringFormat='{0}'}"
+                SelectedItem="{Binding SelectedDebitAccount}"
+                Grid.Row="3"
+                Grid.Column="1"/>
+            <Label
+                Grid.Row="3"
+                Grid.Column="2"
+                VerticalOptions="Center"
+    
+                Text="{Binding SelectedDebitAccount.AccountNumber}"/>
+            <Label 
+                Text="Kredit" 
+                Grid.Row="4" 
+                Grid.Column="0" 
+                HorizontalOptions="End" 
+                VerticalOptions="Center"/>
+            <Picker 
+                x:Name="CreditPicker" 
+                ItemsSource="{Binding Accounts}" 
+                ItemDisplayBinding="{Binding AccountName}"
+                SelectedItem="{Binding SelectedCreditAccount}"
+                Grid.Row="4" 
+                Grid.Column="1"/>
+            <Label
+                Grid.Row="4"
+                Grid.Column="2"
+                VerticalOptions="Center"
+                
+                Text="{Binding SelectedCreditAccount.AccountNumber}"/>
+            <Picker
+                Title=" Välj kategori"
+                Grid.Row="5" Grid.Column="0" 
+                x:Name ="SupplierOrHousehold"
+                ItemsSource="{Binding SupplierOrHouseHold}"
+                SelectedItem="{Binding SelectedSupplierOrHouseHold, Mode=TwoWay}"
+                WidthRequest="200"
+                HorizontalOptions="End"/>
+            <Picker
+                Title=" Välj alternativ"
+                Grid.Row="5" Grid.Column="1"                 
+                x:Name ="SupplierOrHouseHoldAlternatives"
+                ItemsSource="{Binding SelectionList}"
+                ItemDisplayBinding="{Binding DisplayText}"
+                SelectedItem="{Binding SelectedAlternative}"/>
+            <Label
+                Grid.Row="5"
+                Grid.Column="2"
+                
+    
+                Text="{Binding SelectedSupplierOrHousehold}"/>
+            <Label 
+                Text="Beskrivning" 
+                Grid.Row="6" Grid.Column="0" 
+                HorizontalOptions="End" 
+                VerticalOptions="Center"/>
+            
+            <Entry 
+                Grid.Row="6" 
+                Placeholder="Beskrivning" 
+                Grid.Column="1" 
+                Text="{Binding NewTransaction.Description, Mode=TwoWay}" 
+                HorizontalOptions="Fill"/>
+
+        </Grid>
+        <Button 
+            Text="Bokför" 
+            HorizontalOptions="Center" 
+            BackgroundColor="Green"
+            Clicked="OnClickedCreateNewTransaction"/>
+        <Label
+            Text="{Binding ErrorMessage}"
+            VerticalOptions="Center"
+            BackgroundColor="Red"
+            HorizontalOptions="Center"
+    />
+
+
+
+    </VerticalStackLayout>
+</ContentPage>

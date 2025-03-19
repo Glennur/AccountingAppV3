@@ -7,7 +7,7 @@ public partial class NewTransactionPage : ContentPage
     private readonly NewTransactionPageViewModel _viewModel;
 	public NewTransactionPage()
 	{
-        _viewModel = new ViewModels.NewTransactionPageViewModel();
+        _viewModel = NewTransactionPageViewModel.Instance;
         BindingContext = _viewModel;
         InitializeComponent();        
     }

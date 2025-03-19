@@ -21,6 +21,10 @@
             Clicked="NewTransaction"
             BackgroundColor="LightGreen"
             />
+            
+            <Label Text="{Binding WeatherData.Temp, StringFormat='Just nu är det {0}°C i Oxelösund'}" HorizontalOptions="Center"/>
+            <Label Text="{Binding WeatherData.WindSpeed, StringFormat='och det blåser med en vindstyrka på {0} m/s'}" HorizontalOptions="Center"/>
+            <Label Text="{Binding WindDescription, StringFormat='Enligt SMHI klassas det som {0}'}" HorizontalOptions="Center"/>
 
         </VerticalStackLayout>
     </ScrollView>

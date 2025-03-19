@@ -27,6 +27,18 @@ namespace AccountingAppV3.ViewModels
                 return false;
             }
         }
+        private static NewTransactionPageViewModel _instance;
+        public static NewTransactionPageViewModel Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = new NewTransactionPageViewModel();
+                }
+                return _instance;
+            }
+        }
 
         public event PropertyChangedEventHandler? PropertyChanged;
         private ObservableCollection<Models.Account> _accounts = new ObservableCollection<Account>();
